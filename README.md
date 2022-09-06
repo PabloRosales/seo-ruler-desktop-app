@@ -2,4 +2,6 @@
 
 # SEO Ruler Desktop APP
 
+**Note**: This is still in development and not ready to be used. When ready a release will be published.
+
 Open Source version of the SEO Ruler Desktop App.
