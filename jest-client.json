@@ -1,0 +1,42 @@
+{
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules",
+    "<rootDir>/dist"
+  ],
+  "moduleNameMapper": {
+    "^.+\\.svg$": "<rootDir>/app/client/__mocks__/svgImportMock.ts",
+    "^.+\\.png$": "<rootDir>/app/client/__mocks__/pngImportMock.ts"
+  },
+  "moduleFileExtensions": ["js", "json", "ts", "tsx"],
+  "rootDir": ".",
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverageFrom": [
+    "<rootDir>/app/client/**/*.{ts,tsx}",
+    "!<rootDir>/app/client/index.tsx",
+    "!<rootDir>/app/client/App.tsx",
+    "!<rootDir>/app/client/Wrapper.tsx",
+    "!<rootDir>/app/client/common/components/Router.tsx",
+    "!<rootDir>/app/client/test-utils/*"
+  ],
+  "moduleDirectories": [
+    "<rootDir>/node_modules",
+    "<rootDir>/app/client",
+    "<rootDir>/app/client/test-utils"
+  ],
+  "globals": {
+    "__DEV__": true,
+    "ts-jest": {
+      "tsconfig": "tsconfig.json"
+    }
+  },
+  "preset": "ts-jest",
+  "setupFilesAfterEnv": [
+    "<rootDir>/app/client/setupTests.ts"
+  ],
+  "roots": [
+    "<rootDir>/app/client"
+  ]
+}

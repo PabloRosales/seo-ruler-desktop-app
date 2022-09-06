@@ -17,7 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "composite": true,
-    "types": ["vite-plugin-electron/electron-env", "dom", "node"],
+    "types": ["vite-plugin-electron/electron-env", "node"],
+    "paths": {
+      "test-client": ["app/client/test-utils/test-client.tsx"],
+      "test-server": ["app/server/test-utils/test-server.ts"]
+    }
   },
   "include": [
     "electron",

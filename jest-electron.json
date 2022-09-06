@@ -1,0 +1,33 @@
+{
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules",
+    "<rootDir>/dist",
+    "<rootDir>/app/electron/migrations",
+    "<rootDir>/app/electron/preload"
+  ],
+  "collectCoverageFrom": [
+    "<rootDir>/app/electron/**/*.ts",
+    "!<rootDir>/app/electron/main.ts",
+    "!<rootDir>/app/electron/setupTests.ts",
+    "!<rootDir>/app/electron/test-utils",
+    "!<rootDir>/app/electron/migrations"
+  ],
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleDirectories": [
+    "<rootDir>/node_modules",
+    "<rootDir>/app/electron",
+    "<rootDir>/app/electron/test-utils"
+  ],
+  "globals": {
+    "__DEV__": true
+  },
+  "preset": "ts-jest",
+  "roots": [
+    "<rootDir>/app/electron"
+  ]
+}
