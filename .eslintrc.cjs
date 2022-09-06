@@ -10,6 +10,7 @@ module.exports = {
     plugins: ['@typescript-eslint', 'prettier'],
     "rules": {
         'prettier/prettier': 'error',
+        "react/react-in-jsx-scope": "off",
     },
     root: true,
 };
