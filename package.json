@@ -7,6 +7,7 @@
     "dev": "vite --mode=development",
     "test": "jest test",
     "build": "tsc && vite build && electron-builder",
+    "build:ci": "tsc && vite build",
     "test:electron": "jest --config jest-electron.json --coverage",
     "test:client": "jest --config jest-client.json --coverage"
   },

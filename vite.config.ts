@@ -3,6 +3,8 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import electron from 'vite-plugin-electron';
 import react from '@vitejs/plugin-react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import pkg from './package.json';
 
 rmSync('dist', { recursive: true, force: true });
