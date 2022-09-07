@@ -8,6 +8,7 @@ describe('Sidebar', () => {
   });
 
   it('throws error if no options are provided', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => {
       render(<Sidebar navigation={[]} onChange={() => {}} />, {
         wrapper: AppMockWrapper,
@@ -16,6 +17,7 @@ describe('Sidebar', () => {
   });
 
   it('throws error if duplicate "to" options are provided', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => {
       render(
         <Sidebar
@@ -33,6 +35,7 @@ describe('Sidebar', () => {
   });
 
   it('throws error if duplicate "key" options are provided', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => {
       render(
         <Sidebar
