@@ -12,10 +12,6 @@ interface WrapperProps {
   children: React.ReactNode;
 }
 
-const Wrapper = ({ children }: WrapperProps) => {
-  return <div>{children}</div>;
-};
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,10 +25,6 @@ const queryClient = new QueryClient({
     error: () => {},
   },
 });
-
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) => {
-  return render(ui, { wrapper: Wrapper, ...options });
-};
 
 const AppMockWrapper = ({ children }: WrapperProps) => (
   <RecoilRoot>
@@ -84,4 +76,4 @@ export const updateInput = (container: HTMLElement, name: string, value: string)
 };
 
 export * from '@testing-library/react';
-export { customRender as render, AppMockWrapper, ax, FakeAxiosError };
+export { AppMockWrapper, ax, FakeAxiosError };

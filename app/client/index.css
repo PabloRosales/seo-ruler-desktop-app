@@ -9,3 +9,8 @@ html, body {
 html, body {
   @apply bg-gray-50 dark:bg-gray-900;
 }
+
+*, *::after, *::before {
+  -webkit-user-drag: none;
+  -webkit-app-region: no-drag;
+}

@@ -4,19 +4,12 @@ import { ErrorBoundary } from './common/components/ErrorBoundary';
 import { AtomNotifications } from './common/atoms/AtomNotifications';
 import { NotificationArea } from './common/components/NotificationArea';
 import { Dashboard } from './dashboard/Dashboard';
-import { Sidebar, SidebarItem } from './common/components/Sidebar';
+import { Sidebar } from './common/components/Sidebar';
+import { useNav } from './common/hooks/useNav';
 
 export const App = () => {
   const [notifications, setNotifications] = useRecoilState(AtomNotifications);
-
-  const nav: SidebarItem[] = [
-    {
-      name: 'Dashboard',
-      icon: 'home',
-      href: '/',
-      current: true,
-    },
-  ];
+  const { nav, onChange: onNavChange } = useNav();
 
   return (
     <ErrorBoundary>
@@ -28,7 +21,7 @@ export const App = () => {
       />
       <div className="flex">
         <div className="fixed inset-y-0 flex w-64 flex-col">
-          <Sidebar navigation={nav} />
+          <Sidebar navigation={nav} onChange={onNavChange} />
         </div>
         <div className="md:pl-64 py-6">
           <Routes>
