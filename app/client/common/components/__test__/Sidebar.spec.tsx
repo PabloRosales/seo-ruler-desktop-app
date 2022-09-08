@@ -89,9 +89,10 @@ describe('Sidebar', () => {
   it('should show active menu option', () => {
     const { container } = render(
       <Sidebar
+        active="option2"
         navigation={[
           { to: '/option1', key: 'option1', name: 'Option 1' },
-          { to: '/option2', key: 'option2', name: 'Option 2', active: true },
+          { to: '/option2', key: 'option2', name: 'Option 2' },
         ]}
         onChange={() => {}}
       />,
@@ -147,7 +148,7 @@ describe('Sidebar', () => {
       <Sidebar
         navigation={[
           { to: '/option1', key: 'option1', name: 'Option 1' },
-          { to: '/option2', key: 'option2', name: 'Option 2', count: 10, active: true },
+          { to: '/option2', key: 'option2', name: 'Option 2', count: 10 },
           { to: '/option3', key: 'option3', name: 'Option 2', count: 20 },
         ]}
         onChange={() => {}}

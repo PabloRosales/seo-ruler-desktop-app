@@ -6,13 +6,13 @@
     "outDir": "dist",
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": false,
+    "alwaysStrict": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
@@ -24,9 +24,8 @@
     }
   },
   "include": [
-    "electron",
     "app",
     "vite.config.ts",
     "app/assets.d.ts"
-  ]
+  ],
 }

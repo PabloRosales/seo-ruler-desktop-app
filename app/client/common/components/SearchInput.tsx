@@ -12,17 +12,18 @@ export const SearchInput = ({ value, onChange, placeholder }: SearchInputProps) 
       <input
         value={value}
         className={classNames(
-          'text-[13px] text-gray-900 py-2 pr-10 pl-5 focus:outline-none shadow rounded-full',
-          'placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500',
+          'w-full py-2 pr-10 pl-3 shadow rounded-md',
+          'text-sm text-gray-900 dark:bg-gray-700 dark:placeholder:text-gray-400 dark:text-white',
+          'focus:ring-blue-500 focus:border-blue-500 focus:outline-none',
         )}
         placeholder={placeholder}
         onChange={(e) => onChange(e.currentTarget.value)}
       />
       <button
-        className={classNames('absolute block inset-y-0 right-0 mr-3 flex items-center', value === '' ? 'hidden' : '')}
+        className={classNames('absolute block inset-y-0 right-0 mr-4 flex items-center', value === '' ? 'hidden' : '')}
         onClick={() => onChange('')}
       >
-        <i className="h-5 w-5 fa-solid fa-times text-blue-800" aria-hidden="true" />
+        <i className="fa-solid fa-times dark:text-gray-300" aria-hidden="true" />
       </button>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { ErrorBoundary } from './common/components/ErrorBoundary';
 import { AtomNotifications } from './common/atoms/AtomNotifications';
 import { NotificationArea } from './common/components/NotificationArea';
@@ -16,7 +16,7 @@ import { Serp } from './serp/Serp';
 
 export const App = () => {
   const [notifications, setNotifications] = useRecoilState(AtomNotifications);
-  const { nav, onChange: onNavChange } = useNav();
+  const { nav, active: navActive, onChange: onNavChange } = useNav();
 
   return (
     <ErrorBoundary>
@@ -28,7 +28,7 @@ export const App = () => {
       />
       <div className="flex">
         <div className="fixed inset-y-0 flex w-64 flex-col">
-          <Sidebar navigation={nav} onChange={onNavChange} />
+          <Sidebar active={navActive} navigation={nav} onChange={onNavChange} />
         </div>
         <div className="w-full md:pl-64 m-6">
           <div className="mx-auto max-w-7xl">

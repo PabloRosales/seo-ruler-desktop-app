@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { fireEvent, render, RenderOptions } from '@testing-library/react';
+import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 import axios from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 jest.mock('axios');
 const ax = axios as jest.Mocked<typeof axios>;
@@ -17,12 +17,6 @@ const queryClient = new QueryClient({
     queries: {
       retry: false,
     },
-  },
-  logger: {
-    log: console.log,
-    warn: console.warn,
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    error: () => {},
   },
 });
 

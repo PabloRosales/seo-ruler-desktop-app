@@ -1,9 +1,12 @@
 import { join } from 'path';
 import { setupDb } from './db';
-import { app, BrowserWindow, dialog, Menu } from 'electron';
+import { app, ipcMain, BrowserWindow, dialog, Menu } from 'electron';
 import log from 'electron-log';
+import trpc, { callProcedure, inferRouterError, transformTRPCResponse } from '@trpc/server';
+import handleSetProjectDirectory from './handlers/handleSetProjectDirectory';
+import { TRPCErrorResponse, TRPCResponse, TRPCResultResponse } from '@trpc/server/rpc';
 
-export const ROOT_PATH = {
+const ROOT_PATH = {
   dist: join(__dirname, '..'),
   public: join(__dirname, app.isPackaged ? '../..' : '../../../public'),
 };
@@ -22,6 +25,8 @@ log.catchErrors({
 
 setupDb();
 
+const appRouter = trpc.router().merge('settings:', handleSetProjectDirectory);
+
 const createWindow = async () => {
   win = new BrowserWindow({
     icon: join(ROOT_PATH.public, 'logo.png'),
@@ -34,7 +39,7 @@ const createWindow = async () => {
       webviewTag: true,
       spellcheck: false,
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
       preload,
     },
   });
@@ -109,4 +114,30 @@ app.on('window-all-closed', () => {
   win = null;
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(async () => {
+  await createWindow();
+});
+
+ipcMain.handle('rpc', async (_event: unknown, opts) => {
+  const { input, path, type } = opts;
+  const deserializedInput = typeof input !== 'undefined' ? appRouter._def.transformer.input.deserialize(input) : input;
+
+  type TRouterResponse = TRPCErrorResponse<inferRouterError<AppRouter>> | TRPCResultResponse<unknown>;
+  const json: TRouterResponse = {
+    id: null,
+    result: {
+      type: 'data',
+      data: await callProcedure({
+        path,
+        type,
+        ctx: {},
+        router: appRouter as any,
+        input: deserializedInput,
+      }),
+    },
+  };
+
+  return transformTRPCResponse(appRouter, json) as TRPCResponse;
+});
+
+export type AppRouter = typeof appRouter;

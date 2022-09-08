@@ -31,9 +31,9 @@ describe('Button', () => {
   });
 
   it('renders the button with the icon component provided', () => {
-    render(<Button icon={<span>Icon...</span>}>Button With Icon</Button>);
+    const { container } = render(<Button icon="custom-icon">Button With Icon</Button>);
     expect(screen.getByText('Button With Icon')).toBeInTheDocument();
-    expect(screen.getByText('Icon...')).toBeInTheDocument();
+    expect(container.querySelector('.custom-icon')).toBeInTheDocument();
   });
 
   it('renders the button as button when type is not provided', () => {
