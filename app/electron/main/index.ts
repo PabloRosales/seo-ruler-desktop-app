@@ -45,7 +45,7 @@ const createWindow = async () => {
 
   if (import.meta.env.DEV) {
     win.webContents.openDevTools({
-      mode: 'bottom',
+      mode: 'right',
     });
   }
 
