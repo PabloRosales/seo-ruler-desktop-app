@@ -60,7 +60,6 @@
     "draftjs-to-html": "^0.9.1",
     "electron": "^20.1.2",
     "electron-log": "^4.4.8",
-    "electron-trpc": "^0.1.0",
     "googleapis": "^107.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

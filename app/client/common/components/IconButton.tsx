@@ -1,10 +1,9 @@
 import { ButtonProps } from './Button';
 import { classNames } from '../helpers/classNames';
-import { ReactNode } from 'react';
 
 interface IconButtonProps extends Omit<ButtonProps, 'children' | 'type'> {
   text?: string;
-  icon: ReactNode;
+  icon: string;
   danger?: boolean;
 }
 
@@ -21,7 +20,7 @@ export const IconButton = ({ text, danger, icon, disabled, onClick, className }:
         className,
       )}
     >
-      {icon}
+      {icon && <i className={classNames(icon, 'fa-sm mr-3')} />}
       {text && <div className="w-full leading-none pt-1.5 text-[7px] uppercase text-gray-700">{text}</div>}
     </button>
   );
