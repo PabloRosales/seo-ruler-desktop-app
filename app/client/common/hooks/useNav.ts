@@ -9,8 +9,10 @@ export const useNav = () => {
     nav: navState.nav,
     onChange: (e: string) => {
       const nav = navState.nav.map((item: SidebarItem) => {
-        item.active = item.key === e;
-        return item;
+        return {
+          ...item,
+          active: item.key === e,
+        };
       });
       setNavState({ nav });
     },
